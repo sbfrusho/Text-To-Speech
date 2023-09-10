@@ -1,8 +1,29 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:picture_story/text_to_speech.dart';
 
 void main() {
   runApp(PictureStoryApp());
+}
+
+class button extends StatefulWidget {
+  @override
+  State<button> createState() => _buttonState();
+}
+
+class _buttonState extends State<button> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {},
+          child: Text('New'),
+        ),
+      ],
+    );
+  }
 }
 
 class PictureStoryApp extends StatelessWidget {
@@ -19,6 +40,7 @@ class PictureStoryApp extends StatelessWidget {
 }
 
 class StoryLibraryScreen extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +87,6 @@ class StoryLibraryScreen extends StatelessWidget {
 }
 
 class StoryViewerScreen extends StatelessWidget {
-
   TextToSpeech textToSpeech = TextToSpeech();
   final Story story;
 
@@ -96,15 +117,15 @@ class StoryViewerScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                 textToSpeech.speak(story.content);
+                textToSpeech.speak(story.content);
               },
               child: Text('Read Aloud'),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
-              onPressed: () => textToSpeech.stopSpeak(),
-             child: Text("Stop")
-             )
+                onPressed: () => textToSpeech.stopSpeak(), child: Text("Stop"))
           ],
         ),
       ),
